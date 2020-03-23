@@ -5,6 +5,7 @@ import com.koper.sfdi.contoller.GetterInjectedController;
 import com.koper.sfdi.contoller.MyController;
 import com.koper.sfdi.contoller.PropertyInjectedController;
 import com.koper.sfdi.examplebeans.FakeDataSource;
+import com.koper.sfdi.examplebeans.FakeJmsBroker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -22,6 +23,8 @@ public class SfDiApplication {
 		MyController controller = (MyController) applicationContext.getBean("myController");
 
 		FakeDataSource fakeDataSource = (FakeDataSource) applicationContext.getBean(FakeDataSource.class);
+
+		FakeJmsBroker fakeJmsBroker = (FakeJmsBroker) applicationContext.getBean(FakeJmsBroker.class);
 
 /*		System.out.println("-------Primary Bean");
 		System.out.println(sfController.sayHello());
@@ -45,6 +48,7 @@ public class SfDiApplication {
 		System.out.println(applicationContext.getBean(ConstructorInjectedController.class).getGreeting());
 
 		System.out.println(fakeDataSource.getUser());
+		System.out.println(fakeJmsBroker.getUrl());
 
 
 	}
