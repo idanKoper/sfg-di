@@ -1,7 +1,10 @@
 package com.koper.sfdi;
 
-import com.koper.sfdi.contoller.*;
-import com.koper.sfdi.services.GreetingRepositoryImpl;
+import com.koper.sfdi.contoller.ConstructorInjectedController;
+import com.koper.sfdi.contoller.GetterInjectedController;
+import com.koper.sfdi.contoller.MyController;
+import com.koper.sfdi.contoller.PropertyInjectedController;
+import com.koper.sfdi.examplebeans.FakeDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -17,6 +20,8 @@ public class SfDiApplication {
 
 
 		MyController controller = (MyController) applicationContext.getBean("myController");
+
+		FakeDataSource fakeDataSource = (FakeDataSource) applicationContext.getBean(FakeDataSource.class);
 
 /*		System.out.println("-------Primary Bean");
 		System.out.println(sfController.sayHello());
@@ -34,9 +39,14 @@ public class SfDiApplication {
 		System.out.println(constructorInjectedController.getGreeting());*/
 
 		System.out.println(controller.sayHello());
+
 		System.out.println(applicationContext.getBean(PropertyInjectedController.class).getGreeting());
 		System.out.println(applicationContext.getBean(GetterInjectedController.class).getGreeting());
 		System.out.println(applicationContext.getBean(ConstructorInjectedController.class).getGreeting());
+
+		System.out.println(fakeDataSource.getUser());
+
+
 	}
 
 }
